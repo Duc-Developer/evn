@@ -33,7 +33,7 @@ npm run prepare
 Step3: Enjoy your code
 ```javascript
 # for dev
-yarn start
+yarn dev
 # for build
 yarn build
 # for preview my build

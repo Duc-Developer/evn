@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import APP_CONFIGS from "@src/Constants/AppConfigs";
+import { HTTP_STATUS } from '@src/Constants/Http';
 import AxiosService from './axiosService';
-import type { AxiosResponse, InternalAxiosRequestConfig, AxiosRequestConfig } from 'axios';
+import type { AxiosResponse, InternalAxiosRequestConfig, AxiosRequestConfig, AxiosError } from 'axios';
 
 export class BaseService<T> {
     protected endpoint: string;
@@ -8,29 +10,62 @@ export class BaseService<T> {
 
     constructor(endpoint: string) {
         this.endpoint = endpoint;
-        this.init();
+        this._init();
     }
 
-    private init() {
+    private _init() {
         this.controller = new AxiosService();
         const newInterceptors = this.controller.getService().interceptors;
-        newInterceptors.request.use(this.handleRequest);
-        newInterceptors.response.use(this.handleSuccess, this.handleError);
+        newInterceptors.request.use(this._handleRequest);
+        newInterceptors.response.use(this._handleSuccess, this._handleError);
         this.controller.setInterceptors(newInterceptors);
     }
 
-    private handleRequest<T>(config: InternalAxiosRequestConfig<T>) {
+    private _handleRequest<T>(config: InternalAxiosRequestConfig<T>) {
         // you need set access token key in .env for used this feature
         // const accessToken = localStorage.getItem(APP_CONFIGS.ACCESS_TOKEN);
         // config.headers.Authorization =accessToken ? `Bearer ${accessToken}` : '';
         return config;
     }
 
-    private handleSuccess<T>(response: AxiosResponse<T>) {
+    private _handleSuccess<T>(response: AxiosResponse<T>) {
         return response;
     }
 
-    private handleError<T>(error: AxiosResponse<T>) {
+    private async _refreshToken() {
+        // Implement your token refresh logic here
+        // For example, you can make a request to your refresh token endpoint
+        const response = await this.controller.post('/auth/refresh-token', {
+            // Include necessary data for refreshing the token
+        });
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const newToken = (response.data as any).token;
+        // Update your token storage with the new token
+        // For example, localStorage.setItem('token', newToken);
+        const defaultConfigs = this.controller.getService().defaults;
+        defaultConfigs.headers.common['Authorization'] = `Bearer ${newToken}`;
+    }
+
+    private async _handleUnauthorized<T>(error: AxiosError<T>) {
+        const { config: originalRequest = {}, response: { status } = {} } = error;
+        if (status === HTTP_STATUS.UNAUTHORIZED && !(originalRequest as any)?._retry) {
+            (originalRequest as any)._retry = true;
+            try {
+                await this._refreshToken();
+                return this.controller.getService().request(originalRequest);
+            } catch (refreshError) {
+                return Promise.reject(refreshError);
+            } finally {
+                delete (originalRequest as any)._retry;
+            }
+        }
+        return Promise.reject(error);
+    }
+
+    private _handleError<T>(error: AxiosError<T>) {
+        if (error.response?.status === HTTP_STATUS.UNAUTHORIZED) {
+            return this._handleUnauthorized(error);
+        }
         return error;
     }
 

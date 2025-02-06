@@ -48,7 +48,7 @@ const App = observer(() => {
     return (
         <>
             <canvas id="bitcoinCanvas" width="200" height="200"></canvas>
-            <h1>{store.appName}</h1>
+            <h1 className='text-blue-700'>{store.appName}</h1>
             <p className="descriptions">My app based on react and vite</p>
             <ul className="packages">
                 <li>axios</li>
