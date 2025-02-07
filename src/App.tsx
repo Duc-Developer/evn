@@ -1,8 +1,7 @@
-import './App.css';
-import { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-
+import { useEffect } from 'react';
 import commonStore from '@src/Stores/commonStore';
+import './App.css';
 
 const App = observer(() => {
     const store = new commonStore();

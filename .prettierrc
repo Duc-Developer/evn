@@ -5,5 +5,22 @@
     "singleQuote": true,
     "printWidth": 120,
     "bracketSpacing": true,
-    "endOfLine": "lf"
+    "endOfLine": "lf",
+    "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@public/(.*)$",
+    "^@src/(.*)$",
+    "^@components/(.*)$",
+    "^@stores/(.*)$",
+    "^@services/(.*)$",
+    "^@utilities/(.*)$",
+    "^@hooks/(.*)$",
+    "^@assets/(.*)$",
+    "^@constants/(.*)$",
+    "^[./].*(?<!.scss)$",
+    ".*(scss|css)$"
+  ],
+    "plugins": [
+        "@trivago/prettier-plugin-sort-imports"
+    ]
 }
