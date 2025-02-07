@@ -10,9 +10,8 @@ import './i18n.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-          <QueryClientProvider client={queryClient}>
-          <App />
-    </QueryClientProvider>
-        
+        <QueryClientProvider client={queryClient}>
+            <App />
+        </QueryClientProvider>
     </React.StrictMode>,
 );
