@@ -9,18 +9,14 @@
         "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "precommit": "lint-staged",
-        "prepare": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+        "prepare": "rm -rf .husky/pre-commit && npx mrm@2 lint-staged && chmod ug+x .husky/* && chmod ug+x .git/hooks/* && husky install"
     },
     "lint-staged": {
         "src/**/*.{js,jsx,ts,tsx,css,scss}": [
-            "prettier --write ./src"
-        ]
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "yarn run precommit"
-        }
+            "pretty-quick --staged --pattern ./src/**/*.{js,jsx,ts,tsx,css,scss}"
+        ],
+        "*.{ts,tsx}": "eslint --cache --fix",
+        "*.{js,css,md}": "prettier --write"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.0.4",
@@ -41,6 +37,7 @@
     },
     "devDependencies": {
         "@tanstack/eslint-plugin-query": "^5.66.0",
+        "@trivago/prettier-plugin-sort-imports": "^5.2.2",
         "@types/node": "^20.11.20",
         "@types/react": "^18.2.43",
         "@types/react-dom": "^18.2.17",
@@ -52,7 +49,8 @@
         "eslint-plugin-react-refresh": "^0.4.5",
         "husky": "^8.0.3",
         "lint-staged": "^15.2.0",
-        "prettier": "^3.1.1",
+        "prettier": "^3.4.2",
+        "pretty-quick": "^4.0.0",
         "typescript": "^5.2.2",
         "vite": "^5.1.4"
     }

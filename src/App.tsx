@@ -1,8 +1,8 @@
-import './App.css';
 import { observer } from 'mobx-react-lite';
-import evnIconSrc from '@assets/icons/evn.svg';
 import { Button } from 'primereact/button';
 import commonStore from '@src/Stores/commonStore';
+import evnIconSrc from '@assets/icons/evn.svg';
+import './App.css';
 
 const App = observer(() => {
     const store = new commonStore();
