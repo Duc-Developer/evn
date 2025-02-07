@@ -1,18 +1,16 @@
 import { observer } from 'mobx-react-lite';
-import { Button } from 'primereact/button';
-import commonStore from '@src/Stores/commonStore';
-import evnIconSrc from '@assets/icons/evn.svg';
+import { Route, Routes } from 'react-router';
 import './App.css';
+import { routes } from './Routes';
 
 const App = observer(() => {
-    const store = new commonStore();
-
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <img src={evnIconSrc} width={232} height={232} alt="logo" />
-            <h1 className="text-blue-700">{store.appName}</h1>
-            <Button label="Check" icon="pi pi-check" />
-        </div>
+        <Routes>
+            {routes.map((route, index) => {
+                const Component = route.main;
+                return <Route key={route.menuId ?? index} path={route.path} element={<Component />} />;
+            })}
+        </Routes>
     );
 });
 
