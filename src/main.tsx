@@ -7,6 +7,7 @@ import App from './App.tsx';
 import queryClient from './Services/queryClient.ts';
 import './i18n.ts';
 import './index.css';
+import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/tailwind-light/theme.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

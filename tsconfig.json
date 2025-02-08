@@ -2,12 +2,15 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@src/*": [
-                "src/*"
-            ],
-            "@public/*": [
-                "public/*"
-            ]
+            "@src/*": ["src/*"],
+            "@components/*": ["src/Components/*"],
+            "@public/*": ["public/*"],
+            "@stores/*": ["src/Stores/*"],
+            "@services/*": ["src/Services/*"],
+            "@utilities/*": ["src/Utilities/*"],
+            "@assets/*": ["src/assets/*"],
+            "@hooks/*": ["src/Hooks/*"],
+            "@constants/*": ["src/Constants/*"]
         },
         "target": "ES2020",
         "useDefineForClassFields": true,
@@ -39,5 +42,5 @@
         {
             "path": "./tsconfig.node.json"
         }
-    ]
+    ],
 }

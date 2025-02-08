@@ -12,7 +12,7 @@ const View = () => {
     return (
         <>
             <Header />
-            <div className="flex flex-col items-center justify-center h-screen">
+            <div className="flex flex-col items-center justify-center">
                 <h1>{store.appName}</h1>
                 <img src={evnIconSrc} alt="logo" />
                 <Button label="Signin" icon="pi pi-check" onClick={() => navigate(ROUTER_PATHS.SIGNIN)} />
