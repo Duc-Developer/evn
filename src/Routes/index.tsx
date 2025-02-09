@@ -1,10 +1,17 @@
 import React from 'react';
-import Signin from '@src/Pages/Auth/Signin';
-import Home from '@src/Pages/Home';
+
+const Signin = React.lazy(() => import('@pages/Auth/Signin'));
+const Home = React.lazy(() => import('@pages/Home'));
+const Jobs = React.lazy(() => import('@pages/Jobs'));
+const WorkBasket = React.lazy(() => import('@pages/Jobs/WorkBasket'));
 
 export const ROUTER_PATHS = {
     ROOT: '/',
     SIGNIN: '/signin',
+    JOBS: '/jobs',
+    WORK_BASKET: '/jobs/work-basket',
+    WORK_ASSIGNMENT: '/jobs/assignment',
+    WORK_PROGRESS: '/jobs/progress',
 };
 
 const LAYOUT = {
@@ -14,4 +21,8 @@ const LAYOUT = {
 export const routes = [
     { path: ROUTER_PATHS.ROOT, exact: true, main: Home, menuId: '-99', layout: LAYOUT.DEFAULT },
     { path: ROUTER_PATHS.SIGNIN, exact: true, main: Signin, menuId: '1', layout: LAYOUT.NONE },
+    { path: ROUTER_PATHS.JOBS, main: Jobs, menuId: '2', layout: LAYOUT.DEFAULT },
+    { path: ROUTER_PATHS.WORK_BASKET, main: WorkBasket, menuId: '2.1', layout: LAYOUT.DEFAULT },
+    { path: ROUTER_PATHS.WORK_ASSIGNMENT, main: () => <>WORK ASSIGNMENT</>, menuId: '2.2', layout: LAYOUT.DEFAULT },
+    { path: ROUTER_PATHS.WORK_PROGRESS, main: () => <>WORK PROGRESS</>, menuId: '2.3', layout: LAYOUT.DEFAULT },
 ];

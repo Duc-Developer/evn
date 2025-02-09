@@ -1,37 +1,64 @@
 import { MegaMenu } from 'primereact/megamenu';
-import { useNavigate } from 'react-router';
+import { classNames } from 'primereact/utils';
+import { useState } from 'react';
+import { useLocation } from 'react-router';
 import { ROUTER_PATHS } from '@src/Routes';
+import './MainMenu.css';
 
 const MainMenu = () => {
-    const navigate = useNavigate();
+    const [collapsed, setCollapsed] = useState(false);
+    const location = useLocation();
+
+    const isActive = (path: string) => {
+        if (path === ROUTER_PATHS.ROOT) {
+            return location.pathname === path;
+        }
+        return location.pathname.includes(path);
+    };
+
     const items = [
         {
-            label: 'Home',
+            label: 'Trang chủ',
             icon: 'pi pi-fw pi-home',
-            command: () => {
-                navigate(ROUTER_PATHS.ROOT);
-            },
+            className: classNames({ active: isActive(ROUTER_PATHS.ROOT) }),
+            url: ROUTER_PATHS.ROOT,
         },
         {
             label: 'Công việc',
             icon: 'pi pi-fw pi-briefcase',
+            className: classNames({
+                active:
+                    isActive(ROUTER_PATHS.JOBS) ||
+                    isActive(ROUTER_PATHS.WORK_BASKET) ||
+                    isActive(ROUTER_PATHS.WORK_ASSIGNMENT) ||
+                    isActive(ROUTER_PATHS.WORK_PROGRESS),
+            }),
             items: [
-                [
-                    {
-                        label: 'Giỏ công việc',
-                    },
-                    {
-                        label: 'Quản lý phân việc',
-                    },
-                    {
-                        label: 'Theo dõi tiến độ',
-                    },
-                ],
+                {
+                    items: [
+                        {
+                            label: 'Giỏ công việc',
+                            url: ROUTER_PATHS.WORK_BASKET,
+                            className: classNames({ active: isActive(ROUTER_PATHS.WORK_BASKET) }),
+                        },
+                        {
+                            label: 'Quản lý phân việc',
+                            url: ROUTER_PATHS.WORK_ASSIGNMENT,
+                            className: classNames({ active: isActive(ROUTER_PATHS.WORK_ASSIGNMENT) }),
+                        },
+                        {
+                            label: 'Theo dõi tiến độ',
+                            url: ROUTER_PATHS.WORK_PROGRESS,
+                            className: classNames({ active: isActive(ROUTER_PATHS.WORK_PROGRESS) }),
+                        },
+                    ],
+                },
             ],
         },
         {
-            label: 'Settings',
+            label: 'Cài đặt',
             icon: 'pi pi-fw pi-cog',
+            className: collapsed ? 'hidden' : '',
             items: [
                 [
                     {
@@ -58,9 +85,24 @@ const MainMenu = () => {
     ];
     return (
         <MegaMenu
-            className="!rounded-none h-[calc(100vh_-_3.5em)] shadow shadow-lg"
+            className={classNames(
+                'main-menu relative !rounded-none h-[calc(100vh_-_3.5em)] shadow shadow-lg',
+                collapsed ? 'main-menu--label-hidden !w-18' : '',
+            )}
             model={items}
             orientation="vertical"
+            end={
+                <div
+                    className="absolute top-2 -right-3 py-1 bg-gray-500 text-center cursor-pointer rounded-full w-8 h-8 border-2 border-white"
+                    onClick={() => setCollapsed(!collapsed)}
+                >
+                    {collapsed ? (
+                        <i className="pi pi-angle-double-right text-white" style={{ fontSize: '1em' }} />
+                    ) : (
+                        <i className="pi pi-angle-double-left text-white" style={{ fontSize: '1em' }} />
+                    )}
+                </div>
+            }
         />
     );
 };
