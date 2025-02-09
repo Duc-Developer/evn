@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                     <MainMenu />
                 </div>
                 <div className="app-content grow p-4 bg-gray-200">
-                    <div className="app-content__overlay bg-white rounded">{children}</div>
+                    <div className="app-content__overlay rounded">{children}</div>
                 </div>
             </div>
         </section>

@@ -13,6 +13,13 @@ const MainMenu = () => {
             },
         },
         {
+            label: 'Dashboard',
+            icon: 'pi pi-fw pi-table',
+            command: () => {
+                navigate(ROUTER_PATHS.DASHBOARD);
+            },
+        },
+        {
             label: 'Công việc',
             icon: 'pi pi-fw pi-briefcase',
             items: [
@@ -57,11 +64,7 @@ const MainMenu = () => {
         },
     ];
     return (
-        <MegaMenu
-            className="!rounded-none h-[calc(100vh_-_3.5em)] shadow shadow-lg"
-            model={items}
-            orientation="vertical"
-        />
+        <MegaMenu className="!rounded-none h-[calc(100vh_-_3.5em)]  shadow-lg" model={items} orientation="vertical" />
     );
 };
 
