@@ -64,6 +64,44 @@ const MainMenu = () => {
             ],
         },
         {
+            label: 'Chương trình',
+            icon: 'pi pi-fw pi-briefcase',
+            className: classNames({
+                active:
+                    isActive(ROUTER_PATHS.PROGRAMS) ||
+                    isActive(ROUTER_PATHS.PROGRAMS_MANAGEMENT) ||
+                    isActive(ROUTER_PATHS.COST_MANAGEMENT) ||
+                    isActive(ROUTER_PATHS.FILE_MANAGEMENT) ||
+                    isActive(ROUTER_PATHS.PLAN_MANAGEMENT),
+            }),
+            items: [
+                {
+                    items: [
+                        {
+                            label: 'Quản lý chương trình',
+                            url: ROUTER_PATHS.PROGRAMS_MANAGEMENT,
+                            className: classNames({ active: isActive(ROUTER_PATHS.PROGRAMS_MANAGEMENT) }),
+                        },
+                        {
+                            label: 'Quản lý kế hoạch',
+                            url: ROUTER_PATHS.PLAN_MANAGEMENT,
+                            className: classNames({ active: isActive(ROUTER_PATHS.PLAN_MANAGEMENT) }),
+                        },
+                        {
+                            label: 'Quản lý chi phí, tiến độ thanh toán',
+                            url: ROUTER_PATHS.COST_MANAGEMENT,
+                            className: classNames({ active: isActive(ROUTER_PATHS.COST_MANAGEMENT) }),
+                        },
+                        {
+                            label: 'Quản lý file tài liệu lưu trữ quy trình',
+                            url: ROUTER_PATHS.FILE_MANAGEMENT,
+                            className: classNames({ active: isActive(ROUTER_PATHS.FILE_MANAGEMENT) }),
+                        },
+                    ],
+                },
+            ],
+        },
+        {
             label: 'Cài đặt',
             icon: 'pi pi-fw pi-cog',
             className: collapsed ? 'hidden' : '',
