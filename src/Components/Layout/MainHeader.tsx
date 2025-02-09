@@ -1,5 +1,6 @@
 import { Avatar } from 'primereact/avatar';
 import { InputText } from 'primereact/inputtext';
+import MainBreadCrumb from '@components/BreadCrumb/MainBreadCrumb';
 import evnIconSrc from '@assets/icons/evn.svg';
 
 const MainHeader = () => {
@@ -10,6 +11,7 @@ const MainHeader = () => {
                 <span className="text-2xl font-bold text-blue-900 ml-2">EVN</span>
                 <span className="text-2xl font-bold italic text-red-600">HCMC</span>
             </div>
+            <MainBreadCrumb />
             <div className="flex grow items-center justify-end gap-2">
                 <InputText className="h-10" size={32} placeholder="Search" prefix="pi-search" />
                 <i className="pi pi-bell inline-block ml-8" style={{ fontSize: 20 }} />

@@ -19,10 +19,22 @@ const LAYOUT = {
     NONE: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 };
 export const routes = [
-    { path: ROUTER_PATHS.ROOT, exact: true, main: Home, menuId: '-99', layout: LAYOUT.DEFAULT },
-    { path: ROUTER_PATHS.SIGNIN, exact: true, main: Signin, menuId: '1', layout: LAYOUT.NONE },
-    { path: ROUTER_PATHS.JOBS, main: Jobs, menuId: '2', layout: LAYOUT.DEFAULT },
-    { path: ROUTER_PATHS.WORK_BASKET, main: WorkBasket, menuId: '2.1', layout: LAYOUT.DEFAULT },
-    { path: ROUTER_PATHS.WORK_ASSIGNMENT, main: () => <>WORK ASSIGNMENT</>, menuId: '2.2', layout: LAYOUT.DEFAULT },
-    { path: ROUTER_PATHS.WORK_PROGRESS, main: () => <>WORK PROGRESS</>, menuId: '2.3', layout: LAYOUT.DEFAULT },
+    { path: ROUTER_PATHS.ROOT, exact: true, main: Home, menuId: '-99', layout: LAYOUT.DEFAULT, title: 'Trang chủ' },
+    { path: ROUTER_PATHS.SIGNIN, exact: true, main: Signin, menuId: '1', layout: LAYOUT.NONE, title: 'Đăng nhập' },
+    { path: ROUTER_PATHS.JOBS, main: Jobs, menuId: '2', layout: LAYOUT.DEFAULT, title: 'Công việc' },
+    { path: ROUTER_PATHS.WORK_BASKET, main: WorkBasket, menuId: '2.1', layout: LAYOUT.DEFAULT, title: 'Giỏ công việc' },
+    {
+        path: ROUTER_PATHS.WORK_ASSIGNMENT,
+        main: () => <>WORK ASSIGNMENT</>,
+        menuId: '2.2',
+        layout: LAYOUT.DEFAULT,
+        title: 'Quản lý phân việc',
+    },
+    {
+        path: ROUTER_PATHS.WORK_PROGRESS,
+        main: () => <>WORK PROGRESS</>,
+        menuId: '2.3',
+        layout: LAYOUT.DEFAULT,
+        title: 'Theo dõi tiến độ',
+    },
 ];
