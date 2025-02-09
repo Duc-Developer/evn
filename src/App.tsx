@@ -25,7 +25,17 @@ const App = observer(() => {
                         />
                     );
                 }
-                return <Route key={route.menuId ?? index} path={route.path} element={<Component />} />;
+                return (
+                    <Route
+                        key={route.menuId ?? index}
+                        path={route.path}
+                        element={
+                            <React.Suspense>
+                                <Component />
+                            </React.Suspense>
+                        }
+                    />
+                );
             })}
         </Routes>
     );
