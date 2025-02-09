@@ -18,7 +18,7 @@ const App = observer(() => {
                             element={
                                 <React.Suspense>
                                     <Layout>
-                                        <Component />{' '}
+                                        <Component />
                                     </Layout>
                                 </React.Suspense>
                             }

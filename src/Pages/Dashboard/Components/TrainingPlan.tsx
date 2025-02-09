@@ -54,7 +54,7 @@ const TrainingPlan = () => {
                 </p>
             </div>
             {/* Biểu đồ sẽ được thay bằng thư viện phù hợp */}
-            <div className="card flex justify-content-center mt-6">
+            <div className="card flex justify-center items-center mt-6">
                 <Chart type="doughnut" data={chartData} options={chartOptions} className="w-full md:w-30rem" />
             </div>
         </div>

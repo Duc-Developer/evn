@@ -1,0 +1,26 @@
+.main-menu.main-menu--label-hidden .p-menuitem-text {
+    display: none;
+}
+
+.main-menu .p-menuitem.active,
+.p-megamenu .p-menuitem.p-highlight > .p-menuitem-content {
+    background-color: var(--btn-active);
+}
+
+.p-megamenu .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover {
+    background-color: var(--btn-hover);
+}
+
+.p-megamenu .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover .p-menuitem-text {
+    color: #fff;
+}
+
+.p-megamenu .p-menuitem.active > .p-menuitem-content .p-menuitem-link .p-menuitem-text,
+.p-megamenu .p-menuitem.active > .p-menuitem-content .p-menuitem-link .p-menuitem-icon,
+.p-megamenu .p-menuitem.active > .p-menuitem-content .p-menuitem-link .p-submenu-icon {
+    color: #fff;
+}
+
+.p-megamenu-submenu-header.p-submenu-header {
+    display: none;
+}
