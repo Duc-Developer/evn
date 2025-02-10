@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from 'primereact/button';
+import { Button, ButtonProps } from 'antd';
 
 export interface BaseButtonProps extends ButtonProps {}
 const BaseButton = (props: BaseButtonProps) => {

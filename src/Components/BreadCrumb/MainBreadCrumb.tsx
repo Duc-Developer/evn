@@ -1,5 +1,4 @@
-import { BreadCrumb } from 'primereact/breadcrumb';
-import { classNames } from 'primereact/utils';
+import { Breadcrumb } from 'antd';
 import { matchPath, NavLink, useLocation } from 'react-router';
 import { ROUTER_PATHS, routes } from '@src/Routes';
 
@@ -14,11 +13,11 @@ const MainBreadCrumb = () => {
             const matchedRoute = routes.find((route) => route.path === to);
             const isActive = matchPath(location.pathname, to);
             return {
-                label: matchedRoute?.title || path,
-                template: () => (
+                key: to,
+                title: (
                     <NavLink
                         to={to}
-                        className={classNames('font-semibold', isActive ? 'text-primary' : 'text-gray-500')}
+                        className={isActive ? 'font-semibold text-primary' : 'font-semibold text-gray-500'}
                     >
                         {matchedRoute?.title || path}
                     </NavLink>
@@ -26,12 +25,20 @@ const MainBreadCrumb = () => {
             };
         });
 
-    const home = { icon: 'pi pi-home', url: ROUTER_PATHS.ROOT };
+    const home = {
+        key: ROUTER_PATHS.ROOT,
+        title: (
+            <NavLink to={ROUTER_PATHS.ROOT} className="font-semibold text-primary">
+                <i className="pi pi-home" />
+            </NavLink>
+        ),
+    };
 
-    if (location.pathname === ROUTER_PATHS.ROOT) {
+    if (location.pathname === ROUTER_PATHS.ROOT || location.pathname === ROUTER_PATHS.DASHBOARD) {
         return null;
     }
-    return <BreadCrumb className="ml-6 h-10" model={items} home={home} />;
+
+    return <Breadcrumb items={[home, ...items]} />;
 };
 
 export default MainBreadCrumb;

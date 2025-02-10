@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { InputText, InputTextProps } from 'primereact/inputtext';
-import { classNames } from 'primereact/utils';
+import { Input, InputProps } from 'antd';
+import classNames from 'classnames';
 import { Control, Controller, FieldErrors, FieldValues, Path, UseControllerProps } from 'react-hook-form';
 
-export interface LabelInputTextProps<T extends FieldValues = any> extends InputTextProps {
+export interface LabelInputTextProps<T extends FieldValues = any> extends InputProps {
     name: Path<T>;
     control: Control<T, any>;
     errors?: FieldErrors<T>;
@@ -11,6 +11,7 @@ export interface LabelInputTextProps<T extends FieldValues = any> extends InputT
     rules?: UseControllerProps<T>['rules'];
     renderErrors?: (errors: FieldErrors<T>) => React.ReactNode;
 }
+
 const LabelInputText = <T extends FieldValues = any>({
     name,
     rules,
@@ -27,7 +28,7 @@ const LabelInputText = <T extends FieldValues = any>({
                     name={name}
                     control={control}
                     rules={rules}
-                    render={({ field }) => <InputText id={field.name} {...field} {...props} />}
+                    render={({ field }) => <Input id={field.name} {...field} {...props} />}
                 />
                 <label htmlFor={name} className={classNames({ 'p-error': errors?.[name] })}>
                     {label}

@@ -11,6 +11,7 @@ type FormInput = {
     email: string;
     password: string;
 };
+
 const Signin = () => {
     const navigate = useNavigate();
     const backgroundImageUrl = new URL(bgSrc, import.meta.url).href;
@@ -27,7 +28,6 @@ const Signin = () => {
 
     const onSubmit: SubmitHandler<FormInput> = (data) => {
         console.log(data);
-
         navigate(ROUTER_PATHS.ROOT);
     };
 
@@ -60,7 +60,6 @@ const Signin = () => {
                                 message: 'Sai định dạng email',
                             },
                         }}
-                        size={48}
                         control={control}
                         errors={errors}
                         label="Email*"
@@ -69,7 +68,6 @@ const Signin = () => {
                     />
                     <LabelInputText
                         rules={{ required: 'Mật khẩu là bắt buộc' }}
-                        size={48}
                         label="Password*"
                         control={control}
                         errors={errors}
@@ -77,13 +75,12 @@ const Signin = () => {
                         aria-describedby="password-help"
                     />
                     <div className="w-full flex flex-col gap-2">
-                        <BaseButton type="submit" className="w-full" label="Đăng nhập" />
-                        <BaseButton
-                            type="button"
-                            className="w-full"
-                            severity="secondary"
-                            label="Đăng nhập bằng tài khoản công ty"
-                        />
+                        <BaseButton type="primary" htmlType="submit" className="w-full">
+                            Đăng nhập
+                        </BaseButton>
+                        <BaseButton type="default" className="w-full">
+                            Đăng nhập bằng tài khoản công ty
+                        </BaseButton>
                     </div>
                 </div>
             </form>
