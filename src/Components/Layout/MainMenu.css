@@ -6,3 +6,11 @@
 .main-menu.main-menu--label-hidden .ant-menu-submenu-title {
     text-overflow: inherit;
 }
+
+.main-menu__menu::-webkit-scrollbar-track {
+    margin-top: 2.4rem;
+}
+
+.main-menu__menu::-ms-scrollbar-track {
+    margin-top: 2.4rem;
+}

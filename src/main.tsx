@@ -1,6 +1,5 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ConfigProvider, theme } from 'antd';
-import { PrimeReactProvider } from 'primereact/api';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
@@ -8,8 +7,6 @@ import App from './App.tsx';
 import queryClient from './Services/queryClient.ts';
 import './i18n.ts';
 import './index.css';
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/tailwind-light/theme.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -17,13 +14,20 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <ConfigProvider
                 theme={{
                     algorithm: theme.defaultAlgorithm,
+                    token: {
+                        colorPrimary: '#20398B',
+                        colorSuccess: '#52c41a',
+                        colorWarning: '#faad14',
+                        colorError: '#f5222d',
+                        colorInfo: '#1890ff',
+                        colorTextBase: '#333333',
+                        colorBgBase: '#F5F5F5',
+                    },
                 }}
             >
-                <PrimeReactProvider>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
-                </PrimeReactProvider>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
             </ConfigProvider>
         </QueryClientProvider>
     </React.StrictMode>,

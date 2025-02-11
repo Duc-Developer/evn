@@ -1,4 +1,11 @@
-import { faSquareBinary } from '@fortawesome/free-solid-svg-icons';
+import {
+    faSquareBinary,
+    faCircleChevronRight,
+    faCircleChevronLeft,
+    faHouse,
+    faListCheck,
+    faGear,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Menu } from 'antd';
 import classNames from 'classnames';
@@ -11,6 +18,7 @@ const MainMenu = () => {
     const [collapsed, setCollapsed] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+    const [openKeys, setOpenKeys] = useState<string[]>([]);
 
     const isActive = (path: string) => {
         if (path === ROUTER_PATHS.ROOT) {
@@ -23,31 +31,34 @@ const MainMenu = () => {
         {
             key: ROUTER_PATHS.DASHBOARD,
             label: 'Trang chủ',
-            icon: <i className="pi pi-fw pi-table" />,
+            icon: <FontAwesomeIcon icon={faHouse} />,
             className: isActive(ROUTER_PATHS.DASHBOARD) ? 'active' : '',
             onClick: () => navigate(ROUTER_PATHS.DASHBOARD),
         },
         {
             key: 'jobs',
             label: 'Công việc',
-            icon: <i className="pi pi-fw pi-briefcase" />,
+            icon: <FontAwesomeIcon icon={faListCheck} />,
             className: isActive(ROUTER_PATHS.JOBS) ? 'active' : '',
             children: [
                 {
                     key: ROUTER_PATHS.WORK_BASKET,
                     label: 'Giỏ công việc',
+                    title: 'Giỏ công việc',
                     className: isActive(ROUTER_PATHS.WORK_BASKET) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.WORK_BASKET),
                 },
                 {
                     key: ROUTER_PATHS.WORK_ASSIGNMENT,
                     label: 'Quản lý phân việc',
+                    title: 'Quản lý phân việc',
                     className: isActive(ROUTER_PATHS.WORK_ASSIGNMENT) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.WORK_ASSIGNMENT),
                 },
                 {
                     key: ROUTER_PATHS.WORK_PROGRESS,
                     label: 'Theo dõi tiến độ',
+                    title: 'Theo dõi tiến độ',
                     className: isActive(ROUTER_PATHS.WORK_PROGRESS) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.WORK_PROGRESS),
                 },
@@ -62,24 +73,28 @@ const MainMenu = () => {
                 {
                     key: ROUTER_PATHS.PROGRAMS_MANAGEMENT,
                     label: 'Quản lý chương trình',
+                    title: 'Quản lý chương trình',
                     className: isActive(ROUTER_PATHS.PROGRAMS_MANAGEMENT) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.PROGRAMS_MANAGEMENT),
                 },
                 {
                     key: ROUTER_PATHS.PLAN_MANAGEMENT,
                     label: 'Quản lý kế hoạch',
+                    title: 'Quản lý kế hoạch',
                     className: isActive(ROUTER_PATHS.PLAN_MANAGEMENT) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.PLAN_MANAGEMENT),
                 },
                 {
                     key: ROUTER_PATHS.COST_MANAGEMENT,
                     label: 'Quản lý chi phí, tiến độ thanh toán',
+                    title: 'Quản lý chi phí, tiến độ thanh toán',
                     className: isActive(ROUTER_PATHS.COST_MANAGEMENT) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.COST_MANAGEMENT),
                 },
                 {
                     key: ROUTER_PATHS.FILE_MANAGEMENT,
                     label: 'Quản lý file tài liệu lưu trữ quy trình',
+                    title: 'Quản lý file tài liệu lưu trữ quy trình',
                     className: isActive(ROUTER_PATHS.FILE_MANAGEMENT) ? 'active' : '',
                     onClick: () => navigate(ROUTER_PATHS.FILE_MANAGEMENT),
                 },
@@ -88,8 +103,7 @@ const MainMenu = () => {
         {
             key: 'settings',
             label: 'Cài đặt',
-            icon: <i className="pi pi-fw pi-cog" />,
-            className: collapsed ? 'hidden' : '',
+            icon: <FontAwesomeIcon icon={faGear} />,
             children: [
                 {
                     key: 'setting1',
@@ -131,20 +145,24 @@ const MainMenu = () => {
         <div
             className={classNames(
                 'main-menu relative !rounded-none h-[calc(100vh_-_3.5em)] shadow-lg',
-                collapsed ? 'main-menu--label-hidden !w-16' : 'w-56',
+                collapsed ? 'main-menu--label-hidden !w-16' : 'w-64',
             )}
         >
-            <Menu mode="vertical" items={items} className="h-full" />
-            <div
-                className="absolute top-2 -right-3 py-1 bg-gray-500 text-center cursor-pointer rounded-full w-8 h-8 border-2 border-white"
-                onClick={() => setCollapsed(!collapsed)}
-            >
-                {collapsed ? (
-                    <i className="pi pi-angle-double-right text-white" style={{ fontSize: '1em' }} />
-                ) : (
-                    <i className="pi pi-angle-double-left text-white" style={{ fontSize: '1em' }} />
-                )}
-            </div>
+            <Menu
+                openKeys={openKeys}
+                onOpenChange={setOpenKeys}
+                mode="inline"
+                items={items}
+                className="main-menu__menu h-full overflow-y-auto"
+            />
+            <FontAwesomeIcon
+                className="absolute top-2 -right-2 py-1 text-center text-primary cursor-pointer rounded-full text-2xl"
+                icon={collapsed ? faCircleChevronRight : faCircleChevronLeft}
+                onClick={() => {
+                    setCollapsed(!collapsed);
+                    setOpenKeys([]);
+                }}
+            />
         </div>
     );
 };

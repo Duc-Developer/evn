@@ -1,6 +1,9 @@
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Breadcrumb } from 'antd';
 import { matchPath, NavLink, useLocation } from 'react-router';
 import { ROUTER_PATHS, routes } from '@src/Routes';
+import './MainBreadCrumb.css';
 
 const MainBreadCrumb = () => {
     const location = useLocation();
@@ -17,7 +20,7 @@ const MainBreadCrumb = () => {
                 title: (
                     <NavLink
                         to={to}
-                        className={isActive ? 'font-semibold text-primary' : 'font-semibold text-gray-500'}
+                        className={isActive ? 'font-semibold !text-info' : 'font-semibold !text-secondary'}
                     >
                         {matchedRoute?.title || path}
                     </NavLink>
@@ -28,8 +31,8 @@ const MainBreadCrumb = () => {
     const home = {
         key: ROUTER_PATHS.ROOT,
         title: (
-            <NavLink to={ROUTER_PATHS.ROOT} className="font-semibold text-primary">
-                <i className="pi pi-home" />
+            <NavLink to={ROUTER_PATHS.ROOT} className="font-semibold text-secondary">
+                <FontAwesomeIcon className="text-secondary" icon={faHouse} />
             </NavLink>
         ),
     };
@@ -38,7 +41,7 @@ const MainBreadCrumb = () => {
         return null;
     }
 
-    return <Breadcrumb items={[home, ...items]} />;
+    return <Breadcrumb className="main-breadcrumb" items={[home, ...items]} />;
 };
 
 export default MainBreadCrumb;

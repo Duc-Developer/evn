@@ -1,5 +1,5 @@
-import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router';
+import BaseButton from '@src/Components/Button';
 import { ROUTER_PATHS } from '@src/Routes';
 import commonStore from '@src/Stores/commonStore';
 import evnIconSrc from '@assets/icons/evn.svg';
@@ -15,7 +15,9 @@ const View = () => {
             <div className="flex flex-col items-center justify-center">
                 <h1>{store.appName}</h1>
                 <img src={evnIconSrc} alt="logo" />
-                <Button label="Signin" icon="pi pi-check" onClick={() => navigate(ROUTER_PATHS.SIGNIN)} />
+                <BaseButton icon="pi pi-check" onClick={() => navigate(ROUTER_PATHS.SIGNIN)}>
+                    Đăng nhập
+                </BaseButton>
             </div>
             <Footer />
         </>
