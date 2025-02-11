@@ -8,7 +8,7 @@
     --color-error: #f5222d;
     --color-info: #1890ff;
     --color-text-base: #333333;
-    --color-bg-base: #f5f5f5;
+    --color-bg-base: #ffffff;
 }
 
 :root {
@@ -19,7 +19,7 @@
     --color-error: #f5222d;
     --color-info: #1890ff;
     --color-text-base: #333333;
-    --color-bg-base: #f5f5f5;
+    --color-bg-base: #ffffff;
     --btn-active: var(--color-primary);
     --btn-hover: rgba(32, 57, 139, 0.8);
 

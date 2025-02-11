@@ -3,6 +3,7 @@ import { ConfigProvider, theme } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
+import { COLORS } from '@constants/theme.ts';
 import App from './App.tsx';
 import queryClient from './Services/queryClient.ts';
 import './i18n.ts';
@@ -15,13 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 theme={{
                     algorithm: theme.defaultAlgorithm,
                     token: {
-                        colorPrimary: '#20398B',
-                        colorSuccess: '#52c41a',
-                        colorWarning: '#faad14',
-                        colorError: '#f5222d',
-                        colorInfo: '#1890ff',
-                        colorTextBase: '#333333',
-                        colorBgBase: '#F5F5F5',
+                        ...COLORS,
                     },
                 }}
             >

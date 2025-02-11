@@ -6,5 +6,5 @@ export const COLORS = {
     colorError: '#f5222d',
     colorInfo: '#1890ff',
     colorTextBase: '#333333',
-    colorBgBase: '#F5F5F5',
+    colorBgBase: '#FFFFFF',
 };
