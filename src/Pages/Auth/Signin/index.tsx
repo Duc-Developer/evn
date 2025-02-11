@@ -3,7 +3,7 @@ import { FormProviderProps } from 'antd/es/form/context';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 import BaseButton from '@src/Components/Button';
-import LabelInputText from '@src/Components/Input/LabelInputText';
+import BaseInput from '@src/Components/Input/LabelInputText';
 import { ROUTER_PATHS } from '@src/Routes';
 import logoIcon from '@assets/icons/evn.svg';
 import bgSrc from '@assets/images/sigin_background.png';
@@ -37,7 +37,7 @@ const Signin = () => {
                         <img src={logoIcon} alt="logo" width={64} />
                         <h2 className="text-2xl font-bold text-blue-900">EVN</h2>
                     </div>
-                    <LabelInputText
+                    <BaseInput
                         formItemProps={{
                             className: '!mb-4',
                             rules: [{ required: true, message: 'Vui lòng nhập email' }],
@@ -48,7 +48,7 @@ const Signin = () => {
                         name="email"
                         aria-describedby="email-help"
                     />
-                    <LabelInputText
+                    <BaseInput
                         size="large"
                         formItemProps={{
                             className: '!mb-8',

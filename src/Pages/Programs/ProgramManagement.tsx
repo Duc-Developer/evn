@@ -5,8 +5,8 @@ import { Button, Input, Select } from 'antd';
 import { useState } from 'react';
 import BaseCheckbox from '@src/Components/Checkbox';
 import BaseConfirmModal from '@src/Components/ConfirmPopup';
-import BaseModal from '@src/Components/Dialog';
 import BaseTable from '@src/Components/Table';
+import ModalTraining from './Components/ModalTraining';
 
 interface DataType {
     key: string;
@@ -128,8 +128,8 @@ const ProgramManagement = () => {
             title: 'Thao tác',
             key: 'actions',
             render: () => (
-                <div className="flex space-x-2">
-                    <Button type="link" icon={<FontAwesomeIcon icon={faEye} />} />
+                <div className="flex space-x-1">
+                    <Button type="link" icon={<FontAwesomeIcon icon={faEye} />} onClick={() => setIsVisible(true)} />
                     <Button
                         type="link"
                         icon={<FontAwesomeIcon icon={faTrashCan} />}
@@ -139,7 +139,12 @@ const ProgramManagement = () => {
                             })
                         }
                     />
-                    <Button type="link" danger icon={<FontAwesomeIcon icon={faSquarePen} />} />
+                    <Button
+                        type="link"
+                        danger
+                        icon={<FontAwesomeIcon icon={faSquarePen} />}
+                        onClick={() => setIsVisible(true)}
+                    />
                 </div>
             ),
         },
@@ -172,10 +177,15 @@ const ProgramManagement = () => {
                     <Button color="yellow" variant="solid" icon={<FontAwesomeIcon icon={faRotate} />}>
                         Đồng bộ
                     </Button>
-                    <Button variant="outlined" color="primary" icon={<FontAwesomeIcon icon={faPlus} />}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        icon={<FontAwesomeIcon icon={faPlus} />}
+                        onClick={() => setIsVisible(true)}
+                    >
                         Tạo mới
                     </Button>
-                    <Button color="green" variant="solid" icon={<FontAwesomeIcon icon={faFileExport} />}>
+                    <Button color="green" variant="solid" icon={<FontAwesomeIcon icon={faFileExport} color="white" />}>
                         Xuất DS
                     </Button>
                 </div>
@@ -183,13 +193,7 @@ const ProgramManagement = () => {
             <div className="overflow-auto">
                 <BaseTable size="small" columns={columns} dataSource={data} pagination={{ pageSize: 5 }} bordered />
             </div>
-            <BaseModal
-                open={isVisible}
-                onClose={() => setIsVisible(false)}
-                onCancel={() => setIsVisible(false)}
-                onOk={() => setIsVisible(false)}
-                destroyOnClose
-            ></BaseModal>
+            <ModalTraining isVisible={isVisible} setIsVisible={setIsVisible} />
         </div>
     );
 };

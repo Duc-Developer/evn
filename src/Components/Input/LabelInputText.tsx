@@ -7,7 +7,7 @@ export interface LabelInputTextProps extends InputProps {
     formItemProps?: FormItemProps;
 }
 
-const LabelInputText = ({ name, label, formItemProps, ...props }: LabelInputTextProps) => {
+const BaseInput = ({ name, label, formItemProps, ...props }: LabelInputTextProps) => {
     return (
         <Form.Item label={label} name={name} {...formItemProps}>
             <Input {...props} />
@@ -15,4 +15,4 @@ const LabelInputText = ({ name, label, formItemProps, ...props }: LabelInputText
     );
 };
 
-export default LabelInputText;
+export default BaseInput;
