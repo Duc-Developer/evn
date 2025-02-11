@@ -1,0 +1,20 @@
+name: Notification
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+
+jobs:
+
+  nofification:
+    name: Nofification
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: send custom message with args
+      uses: appleboy/discord-action@master
+      with:
+        webhook_id: ${{ secrets.WEBHOOK_ID }}
+        webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+        args: Thông báo - Tài khoản ${{ github.actor }} đã ${{ github.event_name }} tới nhánh ${{ github.ref_name }} của ${{ github.repository }}
+        
