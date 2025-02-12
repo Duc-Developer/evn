@@ -1,16 +1,17 @@
-import { Form, FormItemProps, Input, InputProps } from 'antd';
+import { FormItemProps, Input, InputProps } from 'antd';
+import BaseFormItem from '../Form';
 
-export interface LabelInputTextProps extends InputProps {
+export interface BaseInputProps extends InputProps {
     name: string;
     label: React.ReactNode;
     formItemProps?: FormItemProps;
 }
 
-const BaseInput = ({ name, label, formItemProps, ...props }: LabelInputTextProps) => {
+const BaseInput = ({ name, label, formItemProps, ...props }: BaseInputProps) => {
     return (
-        <Form.Item label={label} name={name} {...formItemProps}>
+        <BaseFormItem label={label} name={name} {...formItemProps}>
             <Input {...props} />
-        </Form.Item>
+        </BaseFormItem>
     );
 };
 

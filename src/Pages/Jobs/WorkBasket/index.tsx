@@ -2,14 +2,14 @@ import { faEdit, faEye, faFileExcel, faTrashCan } from '@fortawesome/free-regula
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form, Typography } from 'antd';
+import classNames from 'classnames';
 import BaseButton from '@src/Components/Button';
 import BaseConfirmModal from '@src/Components/ConfirmPopup';
 import BaseDropdown from '@src/Components/Dropdown/BaseDropdown';
 import BaseTable from '@src/Components/Table';
 import BaseTabs from '@src/Components/Tabs/BaseTabs';
-import Filters from '../Components/Filters';
-import classNames from 'classnames';
 import ProgressTag from '@src/Components/Tag/ProgressTag';
+import Filters from '../Components/Filters';
 
 const mockData = [
     {
@@ -20,8 +20,8 @@ const mockData = [
         codePlan: 'KH001',
         planProcess: 'Quy trình 1',
         step: 'Bước 1',
-        status: <ProgressTag status="done" >Đã hoàn thành</ProgressTag>,
-        progress: <ProgressTag status="inProgress" >Còn 10 ngày</ProgressTag>,
+        status: <ProgressTag status="done">Đã hoàn thành</ProgressTag>,
+        progress: <ProgressTag status="inProgress">Còn 10 ngày</ProgressTag>,
     },
     {
         startDate: '2021-09-01',
@@ -31,8 +31,8 @@ const mockData = [
         codePlan: 'KH002',
         planProcess: 'Quy trình 2',
         step: 'Bước 2',
-        status: <ProgressTag status="inProgress" >Đang thực hiện</ProgressTag>,
-        progress: <ProgressTag status="done" >Đã hoàn thành</ProgressTag>,
+        status: <ProgressTag status="inProgress">Đang thực hiện</ProgressTag>,
+        progress: <ProgressTag status="done">Đã hoàn thành</ProgressTag>,
     },
     {
         startDate: '2021-09-01',
@@ -42,8 +42,8 @@ const mockData = [
         codePlan: 'KH003',
         planProcess: 'Quy trình 3',
         step: 'Bước 3',
-        status: <ProgressTag status="notStarted" >Chưa thực hiện</ProgressTag> ,
-        progress: <ProgressTag status="done" >Đã hoàn thành</ProgressTag>,
+        status: <ProgressTag status="notStarted">Chưa thực hiện</ProgressTag>,
+        progress: <ProgressTag status="done">Đã hoàn thành</ProgressTag>,
     },
     {
         startDate: '2021-09-01',
@@ -53,8 +53,8 @@ const mockData = [
         codePlan: 'KH004',
         planProcess: 'Quy trình 4',
         step: 'Bước 4',
-        status: <ProgressTag status="done" >Đã hoàn thành</ProgressTag>,
-        progress: <ProgressTag status="overdue" >Quá hạn</ProgressTag>,
+        status: <ProgressTag status="done">Đã hoàn thành</ProgressTag>,
+        progress: <ProgressTag status="overdue">Quá hạn</ProgressTag>,
     },
     {
         startDate: '2021-09-01',
@@ -64,8 +64,8 @@ const mockData = [
         codePlan: 'KH005',
         planProcess: 'Quy trình 5',
         step: 'Bước 5',
-        status: <ProgressTag status="inProgress" >Đang thực hiện</ProgressTag>,
-        progress: <ProgressTag status="inProgress" >Còn 10 ngày</ProgressTag>,
+        status: <ProgressTag status="inProgress">Đang thực hiện</ProgressTag>,
+        progress: <ProgressTag status="inProgress">Còn 10 ngày</ProgressTag>,
     },
 ];
 const WorkBasket = () => {
@@ -169,7 +169,7 @@ const WorkBasket = () => {
                     }}
                     trigger={['click']}
                 >
-                    <FontAwesomeIcon icon={faEllipsisVertical} className="cursor-pointer" />
+                    <BaseButton type="text" icon={<FontAwesomeIcon icon={faEllipsisVertical} />} />
                 </BaseDropdown>
             ),
         },
@@ -192,12 +192,19 @@ const WorkBasket = () => {
                         tabBarStyle={{ marginBottom: 0 }}
                         items={[
                             {
-                                label: <div>
-                                    <Typography.Text>Nhiệm vụ cá nhân</Typography.Text>
-                                    <Typography.Text className={
-                                        classNames("inline-block w-6 h-6 ml-2", " !bg-primary !text-white text-center font-bold rounded-full")
-                                    }>5</Typography.Text>
-                                </div>,
+                                label: (
+                                    <div>
+                                        <Typography.Text>Nhiệm vụ cá nhân</Typography.Text>
+                                        <Typography.Text
+                                            className={classNames(
+                                                'inline-block w-6 h-6 ml-2',
+                                                ' !bg-primary !text-white text-center font-bold rounded-full',
+                                            )}
+                                        >
+                                            5
+                                        </Typography.Text>
+                                    </div>
+                                ),
                                 key: '1',
                                 children: (
                                     <BaseTable
@@ -210,12 +217,19 @@ const WorkBasket = () => {
                                 ),
                             },
                             {
-                                label: <div>
-                                <Typography.Text>Nhiệm vụ chung</Typography.Text>
-                                <Typography.Text  className={
-                                        classNames("inline-block w-6 h-6 ml-2", " !bg-primary !text-white text-center font-bold rounded-full")
-                                    }>8</Typography.Text>
-                            </div>,
+                                label: (
+                                    <div>
+                                        <Typography.Text>Nhiệm vụ chung</Typography.Text>
+                                        <Typography.Text
+                                            className={classNames(
+                                                'inline-block w-6 h-6 ml-2',
+                                                ' !bg-primary !text-white text-center font-bold rounded-full',
+                                            )}
+                                        >
+                                            8
+                                        </Typography.Text>
+                                    </div>
+                                ),
                                 key: '2',
                                 children: (
                                     <BaseTable

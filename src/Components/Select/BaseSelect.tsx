@@ -1,16 +1,17 @@
-import { Form, FormItemProps, Select, SelectProps } from 'antd';
+import { FormItemProps, Select, SelectProps } from 'antd';
+import BaseFormItem from '../Form';
 
-export interface BaseSelectProps<ValueType> extends SelectProps<ValueType> {
+export interface BaseSelectProps extends SelectProps {
     name: string;
     label?: React.ReactNode;
     formItemProps?: FormItemProps;
 }
 
-const BaseSelect = <ValueType = any,>({ name, label, formItemProps, ...props }: BaseSelectProps<ValueType>) => {
+const BaseSelect = ({ name, label, formItemProps, ...props }: BaseSelectProps) => {
     return (
-        <Form.Item label={label} name={name} {...formItemProps}>
+        <BaseFormItem label={label} name={name} {...formItemProps}>
             <Select {...props} />
-        </Form.Item>
+        </BaseFormItem>
     );
 };
 

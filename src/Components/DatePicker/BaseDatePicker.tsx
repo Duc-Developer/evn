@@ -1,6 +1,7 @@
-import { Form, FormItemProps, DatePicker } from 'antd';
+import { DatePicker, FormItemProps } from 'antd';
 import { DatePickerProps } from 'antd/es/date-picker';
 import React from 'react';
+import BaseFormItem from '../Form';
 
 export interface BaseDatePickerProps extends DatePickerProps {
     name: string;
@@ -10,9 +11,9 @@ export interface BaseDatePickerProps extends DatePickerProps {
 
 const BaseDatePicker = ({ label, name, formItemProps, ...props }: BaseDatePickerProps) => {
     return (
-        <Form.Item label={label} name={name} {...formItemProps}>
+        <BaseFormItem label={label} name={name} {...formItemProps}>
             <DatePicker {...props} />
-        </Form.Item>
+        </BaseFormItem>
     );
 };
 

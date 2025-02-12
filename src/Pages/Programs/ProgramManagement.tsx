@@ -1,10 +1,14 @@
-import { faEye, faTrashCan } from '@fortawesome/free-regular-svg-icons';
-import { faBars, faFileExport, faPlus, faRotate, faSquarePen } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faEye, faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { faBars, faEllipsisVertical, faFileExport, faPlus, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Input, Select } from 'antd';
+import { Button } from 'antd';
 import { useState } from 'react';
+import BaseButton from '@src/Components/Button';
 import BaseCheckbox from '@src/Components/Checkbox';
 import BaseConfirmModal from '@src/Components/ConfirmPopup';
+import BaseDropdown from '@src/Components/Dropdown/BaseDropdown';
+import BaseInput from '@src/Components/Input/LabelInputText';
+import BaseSelect from '@src/Components/Select/BaseSelect';
 import BaseTable from '@src/Components/Table';
 import ModalTraining from './Components/ModalTraining';
 
@@ -127,25 +131,58 @@ const ProgramManagement = () => {
         {
             title: 'Thao tác',
             key: 'actions',
+            className: 'text-center',
             render: () => (
-                <div className="flex space-x-1">
-                    <Button type="link" icon={<FontAwesomeIcon icon={faEye} />} onClick={() => setIsVisible(true)} />
-                    <Button
-                        type="link"
-                        icon={<FontAwesomeIcon icon={faTrashCan} />}
-                        onClick={() =>
-                            BaseConfirmModal({
-                                content: 'Bạn có muốn xóa chương trình?',
-                            })
-                        }
-                    />
-                    <Button
-                        type="link"
-                        danger
-                        icon={<FontAwesomeIcon icon={faSquarePen} />}
-                        onClick={() => setIsVisible(true)}
-                    />
-                </div>
+                <BaseDropdown
+                    menu={{
+                        items: [
+                            {
+                                label: (
+                                    <BaseButton
+                                        type="text"
+                                        icon={<FontAwesomeIcon icon={faEye} />}
+                                        onClick={() => setIsVisible(true)}
+                                    >
+                                        Xem chi tiết
+                                    </BaseButton>
+                                ),
+                                key: '0',
+                            },
+                            {
+                                label: (
+                                    <BaseButton
+                                        type="text"
+                                        danger
+                                        icon={<FontAwesomeIcon icon={faEdit} />}
+                                        onClick={() => setIsVisible(true)}
+                                    >
+                                        Chỉnh sửa
+                                    </BaseButton>
+                                ),
+                                key: '1',
+                            },
+                            {
+                                label: (
+                                    <BaseButton
+                                        type="text"
+                                        icon={<FontAwesomeIcon icon={faTrashCan} />}
+                                        onClick={() =>
+                                            BaseConfirmModal({
+                                                content: 'Bạn có muốn xóa chương trình?',
+                                            })
+                                        }
+                                    >
+                                        Xóa bỏ
+                                    </BaseButton>
+                                ),
+                                key: '2',
+                            },
+                        ],
+                    }}
+                    trigger={['click']}
+                >
+                    <BaseButton type="text" icon={<FontAwesomeIcon icon={faEllipsisVertical} />} />
+                </BaseDropdown>
             ),
         },
     ];
@@ -158,8 +195,10 @@ const ProgramManagement = () => {
             </div>
             <div className="flex items-center justify-between">
                 <div className="flex gap-4">
-                    <Input placeholder="Nhập tên chương trình đào tạo…" />
-                    <Select
+                    <BaseInput label="" name="" placeholder="Nhập tên chương trình đào tạo…" />
+                    <BaseSelect
+                        label=""
+                        name=""
                         options={[
                             {
                                 value: 2024,
@@ -182,6 +221,7 @@ const ProgramManagement = () => {
                         color="primary"
                         icon={<FontAwesomeIcon icon={faPlus} />}
                         onClick={() => setIsVisible(true)}
+                        className=" !shadow-none"
                     >
                         Tạo mới
                     </Button>
