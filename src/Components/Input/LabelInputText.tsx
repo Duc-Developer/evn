@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Form, FormItemProps, Input, InputProps } from 'antd';
 
 export interface LabelInputTextProps extends InputProps {

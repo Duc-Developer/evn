@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 // import APP_CONFIGS from "@src/Constants/AppConfigs";
 import { HTTP_STATUS } from '@src/Constants/Http';
 import AxiosService from './axiosService';
@@ -38,7 +37,6 @@ export class BaseService<T> {
         const response = await this.controller.post('/auth/refresh-token', {
             // Include necessary data for refreshing the token
         });
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const newToken = (response.data as any).token;
         // Update your token storage with the new token
         // For example, localStorage.setItem('token', newToken);
