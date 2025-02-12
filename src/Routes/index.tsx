@@ -1,3 +1,4 @@
+import WorkAssignment from '@src/Pages/Jobs/WorkAssignment';
 import React from 'react';
 
 const Signin = React.lazy(() => import('@pages/Auth/Signin'));
@@ -37,7 +38,7 @@ export const routes = [
     { path: ROUTER_PATHS.WORK_BASKET, main: WorkBasket, menuId: '2.1', layout: LAYOUT.DEFAULT, title: 'Giỏ công việc' },
     {
         path: ROUTER_PATHS.WORK_ASSIGNMENT,
-        main: () => <>WORK ASSIGNMENT</>,
+        main: () => <WorkAssignment />,
         menuId: '2.2',
         layout: LAYOUT.DEFAULT,
         title: 'Quản lý phân việc',

@@ -14,3 +14,8 @@
 .main-menu__menu::-ms-scrollbar-track {
     margin-top: 2.4rem;
 }
+
+.main-menu__menu .ant-menu-item.active {
+    background-color: var(--btn-active);
+    color: var(--color-secondary);
+}

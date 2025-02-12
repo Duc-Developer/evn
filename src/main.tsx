@@ -6,6 +6,8 @@ import { BrowserRouter } from 'react-router';
 import { COLORS } from '@constants/theme.ts';
 import App from './App.tsx';
 import queryClient from './Services/queryClient.ts';
+import viVN from 'antd/lib/locale/vi_VN';
+
 import './i18n.ts';
 import './index.css';
 
@@ -19,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                         ...COLORS,
                     },
                 }}
+                locale={viVN}
             >
                 <BrowserRouter>
                     <App />

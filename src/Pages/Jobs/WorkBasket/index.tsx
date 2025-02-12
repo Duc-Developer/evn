@@ -179,7 +179,7 @@ const WorkBasket = () => {
         <div className="bg-bg-base rounded h-full">
             <Form.Provider onFormFinish={console.log}>
                 <div className="flex gap-2 justify-between p-4">
-                    <Filters />
+                    <Filters pageType='workBasket' />
                     <BaseButton type="primary" icon={<FontAwesomeIcon icon={faFileExcel} />}>
                         Xuất DS
                     </BaseButton>

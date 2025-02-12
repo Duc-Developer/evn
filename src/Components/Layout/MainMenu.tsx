@@ -31,14 +31,14 @@ const MainMenu = () => {
         {
             key: ROUTER_PATHS.DASHBOARD,
             label: 'Trang chủ',
-            icon: <FontAwesomeIcon icon={faHouse} />,
+            icon: <FontAwesomeIcon icon={faHouse} className='!text-xl' />,
             className: isActive(ROUTER_PATHS.DASHBOARD) ? 'active' : '',
             onClick: () => navigate(ROUTER_PATHS.DASHBOARD),
         },
         {
             key: 'jobs',
             label: 'Công việc',
-            icon: <FontAwesomeIcon icon={faListCheck} />,
+            icon: <FontAwesomeIcon icon={faListCheck} className='!text-xl' />,
             className: isActive(ROUTER_PATHS.JOBS) ? 'active' : '',
             children: [
                 {
@@ -67,7 +67,7 @@ const MainMenu = () => {
         {
             key: 'programs',
             label: 'Chương trình',
-            icon: <FontAwesomeIcon icon={faSquareBinary} />,
+            icon: <FontAwesomeIcon icon={faSquareBinary}  className='!text-xl' />,
             className: isActive(ROUTER_PATHS.PROGRAMS) ? 'active' : '',
             children: [
                 {
@@ -103,7 +103,7 @@ const MainMenu = () => {
         {
             key: 'settings',
             label: 'Cài đặt',
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <FontAwesomeIcon icon={faGear}  className='!text-xl' />,
             children: [
                 {
                     key: 'setting1',
@@ -153,6 +153,7 @@ const MainMenu = () => {
                 onOpenChange={setOpenKeys}
                 mode="inline"
                 items={items}
+                inlineIndent={16}
                 className="main-menu__menu h-full overflow-y-auto"
             />
             <FontAwesomeIcon
