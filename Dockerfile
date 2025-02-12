@@ -1,11 +1,12 @@
 # Use an official Node.js image for building
 FROM node:20.18-alpine3.21 AS builder
 
-ENV HUSKY=0
+RUN apk add --no-cache git bash
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
 COPY .husky .husky
+COPY .git .git
 RUN npm install
 
 # Copy the rest of the app source
