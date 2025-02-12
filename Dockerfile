@@ -9,6 +9,7 @@ COPY .husky .husky
 COPY .git .git
 RUN npm install
 
+WORKDIR /app
 # Copy the rest of the app source
 COPY . .
 
@@ -22,8 +23,8 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy build files from the builder stage
-COPY --from=builder /dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /app/nginx/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
