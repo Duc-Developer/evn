@@ -9,7 +9,7 @@
         "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "prepare": "rm -rf .husky/pre-commit && npx mrm@2 lint-staged && chmod ug+x .husky/* && chmod ug+x .git/hooks/* && husky install"
+        "prepare": "npx rimraf .husky/pre-commit && npx mrm@2 lint-staged && chmod ug+x .husky/* && chmod ug+x .git/hooks/* && husky install"
     },
     "lint-staged": {
         "src/**/*.{js,jsx,ts,tsx,css,scss}": [
