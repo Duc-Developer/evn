@@ -5,8 +5,8 @@ import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import HttpBackend from 'i18next-http-backend';
-import english from './Assets/languages/en.json';
-import japanese from './Assets/languages/jan.json';
+import english from './assets/languages/en.json';
+import japanese from './assets/languages/jan.json';
 // don't want to use this?
 // have a look at the Quick start guide
 // for passing in lng and translations on init
