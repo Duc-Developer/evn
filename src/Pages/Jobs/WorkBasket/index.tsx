@@ -71,7 +71,7 @@ const WorkBasket = () => {
         {
             title: 'STT',
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            render: (value: any, item: any, index: number) => index + 1,
+            render: (_value: any, _item: any, index: number) => index + 1,
             key: '_no',
             className: 'text-center',
         },
