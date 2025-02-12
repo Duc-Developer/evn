@@ -1,8 +1,7 @@
 # Use an official Node.js image for building
 FROM node:20.18-alpine3.21 AS builder
 
-# Set working directory
-WORKDIR /app
+ENV HUSKY=0
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
