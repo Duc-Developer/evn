@@ -1,8 +1,8 @@
-import { Form } from 'antd';
 import BaseUpload from '@src/Components/BaseUpload';
 import BaseButton from '@src/Components/Button';
 import BaseDatePicker from '@src/Components/DatePicker/BaseDatePicker';
 import BaseModal from '@src/Components/Dialog';
+import BaseFormItem from '@src/Components/Form';
 import BaseInput from '@src/Components/Input/LabelInputText';
 import BaseSelect from '@src/Components/Select/BaseSelect';
 import BaseTextArea from '@src/Components/TextArea';
@@ -35,8 +35,7 @@ const ModalTraining = (props: Props) => {
                     <BaseButton>Hủy</BaseButton>
                 </div>
 
-                <Form layout="vertical">
-                    {/* Thông tin chương trình đào tạo */}
+                <BaseFormItem layout="vertical">
                     <h2 className="text-lg font-semibold mb-2">Thông tin chương trình đào tạo</h2>
                     <div className="grid grid-cols-2 gap-4">
                         <BaseSelect placeholder="Chọn" label="Kế hoạch đào tạo năm *" name="planYear" />
@@ -86,7 +85,7 @@ const ModalTraining = (props: Props) => {
                     <BaseUpload label="Đính kèm" name="">
                         <BaseButton>Tải file</BaseButton>
                     </BaseUpload>
-                </Form>
+                </BaseFormItem>
             </div>
         </BaseModal>
     );

@@ -1,5 +1,5 @@
-import WorkAssignment from '@src/Pages/Jobs/WorkAssignment';
 import React from 'react';
+import WorkAssignment from '@src/Pages/Jobs/WorkAssignment';
 
 const Signin = React.lazy(() => import('@pages/Auth/Signin'));
 const Home = React.lazy(() => import('@pages/Home'));
@@ -11,6 +11,13 @@ const ProgramsManagement = React.lazy(() => import('@src/Pages/Programs/ProgramM
 const PlanManagement = React.lazy(() => import('@src/Pages/Programs/PlanManagement'));
 const CostManagement = React.lazy(() => import('@src/Pages/Programs/CostManagement'));
 const FileManagement = React.lazy(() => import('@src/Pages/Programs/FileManagement'));
+const Systems = React.lazy(() => import('@src/Pages/System/index'));
+const AccountManagement = React.lazy(() => import('@src/Pages/System/AccountManagement'));
+const RoleManagement = React.lazy(() => import('@src/Pages/System/RoleManagement'));
+const SynchronizedListManagement = React.lazy(() => import('@src/Pages/System/SynchronizedListManagement'));
+const UnitManagement = React.lazy(() => import('@src/Pages/System/UnitManagement'));
+const LabelingManagement = React.lazy(() => import('@src/Pages/System/LabelingManagement'));
+const SyncConfiguration = React.lazy(() => import('@src/Pages/System/SyncConfiguration'));
 
 export const ROUTER_PATHS = {
     ROOT: '/',
@@ -25,6 +32,13 @@ export const ROUTER_PATHS = {
     PLAN_MANAGEMENT: '/programs/plan-management',
     COST_MANAGEMENT: '/programs/cost-management',
     FILE_MANAGEMENT: '/programs/file-management',
+    SYSTEMS: '/systems',
+    ACCOUNT_MANAGEMENT: '/systems/account-management',
+    ROLE_MANAGEMENT: '/systems/role-management',
+    SYNCHRONIZED_LIST_MANAGEMENT: '/systems/synchronized-list-management',
+    UNIT_MANAGEMENT: '/systems/unit-management',
+    LABELING_MANAGEMENT: '/systems/labeling-management',
+    SYNC_CONFIGURATION: '/systems/sync-configuration',
 };
 
 const LAYOUT = {
@@ -97,5 +111,61 @@ export const routes = [
         menuId: '4.4',
         layout: LAYOUT.DEFAULT,
         title: 'Quản lý file tài liệu lưu trữ quy trình',
+    },
+    {
+        path: ROUTER_PATHS.SYSTEMS,
+        exact: true,
+        main: Systems,
+        menuId: '5',
+        layout: LAYOUT.DEFAULT,
+        title: 'Hệ thống',
+    },
+    {
+        path: ROUTER_PATHS.ACCOUNT_MANAGEMENT,
+        exact: true,
+        main: AccountManagement,
+        menuId: '5.1',
+        layout: LAYOUT.DEFAULT,
+        title: 'Quản lý tài khoản',
+    },
+    {
+        path: ROUTER_PATHS.ROLE_MANAGEMENT,
+        exact: true,
+        main: RoleManagement,
+        menuId: '5.2',
+        layout: LAYOUT.DEFAULT,
+        title: 'Quản lý vai trò',
+    },
+    {
+        path: ROUTER_PATHS.SYNCHRONIZED_LIST_MANAGEMENT,
+        exact: true,
+        main: SynchronizedListManagement,
+        menuId: '5.3',
+        layout: LAYOUT.DEFAULT,
+        title: 'Quản lý danh mục đồng bộ',
+    },
+    {
+        path: ROUTER_PATHS.UNIT_MANAGEMENT,
+        exact: true,
+        main: UnitManagement,
+        menuId: '5.4',
+        layout: LAYOUT.DEFAULT,
+        title: 'Quản lý đơn vị',
+    },
+    {
+        path: ROUTER_PATHS.LABELING_MANAGEMENT,
+        exact: true,
+        main: LabelingManagement,
+        menuId: '5.5',
+        layout: LAYOUT.DEFAULT,
+        title: 'Quản lý gán nhãn',
+    },
+    {
+        path: ROUTER_PATHS.SYNC_CONFIGURATION,
+        exact: true,
+        main: SyncConfiguration,
+        menuId: '5.6',
+        layout: LAYOUT.DEFAULT,
+        title: 'Cấu hình đồng bộ',
     },
 ];

@@ -1,7 +1,6 @@
 import { faEdit, faEye, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faBars, faEllipsisVertical, faFileExport, faPlus, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from 'antd';
 import { useState } from 'react';
 import BaseButton from '@src/Components/Button';
 import BaseCheckbox from '@src/Components/Checkbox';
@@ -106,7 +105,7 @@ const ProgramManagement = () => {
             key: 'outplan',
             render: () => (
                 <div className="text-center">
-                    <BaseCheckbox />
+                    <BaseCheckbox label="" name="" />
                 </div>
             ),
         },
@@ -213,10 +212,10 @@ const ProgramManagement = () => {
                     />
                 </div>
                 <div className="flex items-center gap-4">
-                    <Button color="yellow" variant="solid" icon={<FontAwesomeIcon icon={faRotate} />}>
+                    <BaseButton color="yellow" variant="solid" icon={<FontAwesomeIcon icon={faRotate} />}>
                         Đồng bộ
-                    </Button>
-                    <Button
+                    </BaseButton>
+                    <BaseButton
                         variant="outlined"
                         color="primary"
                         icon={<FontAwesomeIcon icon={faPlus} />}
@@ -224,10 +223,14 @@ const ProgramManagement = () => {
                         className=" !shadow-none"
                     >
                         Tạo mới
-                    </Button>
-                    <Button color="green" variant="solid" icon={<FontAwesomeIcon icon={faFileExport} color="white" />}>
+                    </BaseButton>
+                    <BaseButton
+                        color="green"
+                        variant="solid"
+                        icon={<FontAwesomeIcon icon={faFileExport} color="white" />}
+                    >
                         Xuất DS
-                    </Button>
+                    </BaseButton>
                 </div>
             </div>
             <div className="overflow-auto">

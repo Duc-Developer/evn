@@ -10,7 +10,7 @@ export interface BaseTextAreaProps extends TextAreaProps {
     formItemProps?: FormItemProps;
 }
 
-const BaseTextArea: React.FC<BaseTextAreaProps> = ({ name, label, formItemProps, ...props }: BaseTextAreaProps) => {
+const BaseTextArea: React.FC<BaseTextAreaProps> = ({ name, label, formItemProps, ...props }) => {
     return (
         <BaseFormItem label={label} name={name} {...formItemProps}>
             <TextArea {...props} />
