@@ -5,6 +5,7 @@ ENV HUSKY=0
 
 # Copy package.json and install dependencies
 COPY package.json package-lock.json ./
+COPY .husky .husky
 RUN npm install
 
 # Copy the rest of the app source
