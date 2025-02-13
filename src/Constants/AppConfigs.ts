@@ -1,4 +1,4 @@
-const APP_CONFIGS: { [key: string]: string } = {
+const APP_CONFIGS = {
     ROOT_API: import.meta.env.VITE_REACT_APP_API_URL,
     ACCESS_TOKEN: import.meta.env.VITE_REACT_APP_ACCESS_TOKEN,
 };

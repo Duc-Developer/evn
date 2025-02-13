@@ -1,7 +1,7 @@
 // import APP_CONFIGS from "@src/Constants/AppConfigs";
+import type { AxiosResponse, InternalAxiosRequestConfig, AxiosRequestConfig, AxiosError } from 'axios';
 import { HTTP_STATUS } from '@src/Constants/Http';
 import AxiosService from './axiosService';
-import type { AxiosResponse, InternalAxiosRequestConfig, AxiosRequestConfig, AxiosError } from 'axios';
 
 export class BaseService<T> {
     protected endpoint: string;
@@ -64,7 +64,7 @@ export class BaseService<T> {
         if (error.response?.status === HTTP_STATUS.UNAUTHORIZED) {
             return this._handleUnauthorized(error);
         }
-        return error;
+        throw error;
     }
 
     async get<I = unknown>(id: string = '', config?: AxiosRequestConfig) {
@@ -76,7 +76,7 @@ export class BaseService<T> {
         return this.controller.put<T>(endpoint, data, config);
     }
 
-    async post<T = unknown>(data?: unknown, config?: AxiosRequestConfig) {
+    async post<T = unknown, TData = unknown>(data?: TData, config?: AxiosRequestConfig<TData>) {
         const endpoint = config?.url ?? this.endpoint;
         return this.controller.post<T>(endpoint, data ?? {}, config);
     }
