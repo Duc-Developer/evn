@@ -1,16 +1,42 @@
 ## Introduction
+
 Process is one of the important parts of the project. Compliance with the process is the responsibility of each programmer. We always promote discipline and seriousness of each individual.
 Below is a guide for you on some common processes and standards for the entire project including:
+
 1. [Preparation steps before developing this project](#1-preparation-steps-before-developing-this-project)
 2. [Branching and commit organization standards](#2-branching-and-commit-organization-standards)
 3. [General working process for programmer position](#3-general-working-process-for-programmer-position)
 
+## Environments
+
+Please using node **>=20.18** & npm **10.8.2**
+| STT | Packages | Version |
+| --- | --- | --- |
+| 1 | react | ^18.2.0 |
+| 2 | react-dom | ^18.2.0 |
+| 3 | antd | ^5.23.4 |
+| 4 | axios | ^1.6.7 |
+| 5 | chart.js | ^4.4.7 |
+| 6 | react-chartjs-2 | ^5.3.0 |
+| 7 | classnames | ^2.5.1 |
+| 8 | dayjs | ^1.11.13 |
+| 9 | mobx | ^6.12.0 |
+| 10 | mobx-react-lite | ^4.0.5 |
+| 11 | tailwindcss | ^4.0.4 |
+| 12 | @fortawesome/fontawesome-svg-core | ^6.7.2 |
+| 13 | @fortawesome/free-regular-svg-icons | ^6.7.2 |
+| 14 | @fortawesome/free-solid-svg-icons | ^6.7.2 |
+| 15 | @fortawesome/react-fontawesome | ^0.2.2 |
+| 15 | i18next | ^23.7.16 |
+
 ## Guideline
 
 ### 1. Preparation steps before developing this project
+
 You need to pull the source code from the repo. Before starting to code, you need to set up some folders and files to help unify the team's coding standards
 
 Step1: prettier config
+
 <details>
 <summary>For Vscode</summary>
 If you used vscode, you must config this line bellow in .vscode/setting.json.
@@ -23,14 +49,17 @@ If you don't already have it, please create it.
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
 ```
+
 </details>
 
 Step2: Husky config
+
 ```javascript
 npm run prepare
 ```
 
 Step3: Enjoy your code
+
 ```javascript
 # for dev
 yarn dev
@@ -41,24 +70,27 @@ yarn preview
 ```
 
 ### 2. Branching and commit organization standards
+
 ```
 # For common brach, their name must be follow this convention:
     <type>/<business-group>-<ticket-number>_<purpose>
     - type, business-group and purpose required
     - ticket-number is optional
 ```
+
 Ex: feature/claims-45_add-policy-comparison.
 
 <details>
 <summary>type</summary>
 
 ### Detail for type list
-* hotfix: for quickly fixing critical issues, usually with a temporary solution
-* fixbug: for fixing a bug
-* feature: for adding, removing or modifying a feature
-* test: for experimenting something which is not an issue
-* wip: 	for a work in progress
-</details>
+
+- hotfix: for quickly fixing critical issues, usually with a temporary solution
+- fixbug: for fixing a bug
+- feature: for adding, removing or modifying a feature
+- test: for experimenting something which is not an issue
+- wip: for a work in progress
+  </details>
 
 <details>
 <summary>business-group</summary>
@@ -77,9 +109,11 @@ ticket's id you processing for this code.
 
 > [!NOTE]
 > This structure can be tailored to specific projects.
-------------
+
+---
 
 #### a. Code convention rules
+
 All pull request must be check with list condition.
 
 | Item                                                                                | Pass: P /Fail: N /NA |
@@ -114,41 +148,45 @@ All pull request must be check with list condition.
 <summary>type</summary>
 
 ### Detail for type list
-* feat: a new feature (feature)
-* fix: fix bug
-* docs: capture documents (edit documents)
-* style: Add space, format code, missing punctuation marks
-* refactor: Rename function, variables, separate function and more refactor code,...
-* perf: Performance improvements
-* test: Add more test case, edit unit test
-* build: Change build process: package.json, build line,...
-* ci: Update file script for ci/cd process: yml, docker-compose,...
-</details>
+
+- feat: a new feature (feature)
+- fix: fix bug
+- docs: capture documents (edit documents)
+- style: Add space, format code, missing punctuation marks
+- refactor: Rename function, variables, separate function and more refactor code,...
+- perf: Performance improvements
+- test: Add more test case, edit unit test
+- build: Change build process: package.json, build line,...
+- ci: Update file script for ci/cd process: yml, docker-compose,...
+  </details>
 
 <details>
 <summary>description</summary>
 
 ### Detail and rule for description
-* Concise description of commit content
-* No longer than 50 characters so it can be easily read on github, as well as other git tools
-* Use imperative sentences, in the present tense. Ex: "change..." instead "changed..."
-* Do not capitalize the first letter
-* Do not use commas at the end of sentences
-</details>
+
+- Concise description of commit content
+- No longer than 50 characters so it can be easily read on github, as well as other git tools
+- Use imperative sentences, in the present tense. Ex: "change..." instead "changed..."
+- Do not capitalize the first letter
+- Do not use commas at the end of sentences
+  </details>
 
 <details>
 <summary>body</summary>
 
 ### Detail and rule for body
-* Optional part, used to describe the commit in more detail if you needed
-* Has a blank line with a description before it
-* Use WH questions (what|When|Why) instead How question
-</details>
+
+- Optional part, used to describe the commit in more detail if you needed
+- Has a blank line with a description before it
+- Use WH questions (what|When|Why) instead How question
+  </details>
 
 > [!NOTE]
 > This structure can be tailored to specific projects.
 
 #### c. Git Graph
+
 Every branch which used for fix bug, create new features,... alway checkout and create a pull request when done. Follow this diagram bellow
 
 ```mermaid
@@ -196,6 +234,7 @@ Every branch which used for fix bug, create new features,... alway checkout and 
         checkout develop
         merge release
 ```
+
 ### 3. General working process for programmer position
 
 ```mermaid
