@@ -1,18 +1,18 @@
-import BasePassword from '@src/Components/BasePassWord';
 import BaseButton from '@src/Components/Button';
 import BaseCheckbox from '@src/Components/Checkbox';
 import BaseDatePicker from '@src/Components/DatePicker/BaseDatePicker';
 import BaseModal from '@src/Components/Dialog';
 import BaseFormItem from '@src/Components/Form';
 import BaseInput from '@src/Components/Input/LabelInputText';
+import BasePassword from '@src/Components/PassWord';
 import BaseSelect from '@src/Components/Select/BaseSelect';
 
-interface Props {
+interface IProps {
     isVisible: boolean;
     setIsVisible: (val: boolean) => void;
 }
 
-const ModalAccount = (props: Props) => {
+const ModalAccount = (props: IProps) => {
     const { isVisible, setIsVisible } = props;
     return (
         <BaseModal

@@ -1,4 +1,3 @@
-import BaseUpload from '@src/Components/BaseUpload';
 import BaseButton from '@src/Components/Button';
 import BaseDatePicker from '@src/Components/DatePicker/BaseDatePicker';
 import BaseModal from '@src/Components/Dialog';
@@ -6,13 +5,14 @@ import BaseFormItem from '@src/Components/Form';
 import BaseInput from '@src/Components/Input/LabelInputText';
 import BaseSelect from '@src/Components/Select/BaseSelect';
 import BaseTextArea from '@src/Components/TextArea';
+import BaseUpload from '@src/Components/Upload';
 
-interface Props {
+interface IProps {
     isVisible: boolean;
     setIsVisible: (val: boolean) => void;
 }
 
-const ModalTraining = (props: Props) => {
+const ModalTraining = (props: IProps) => {
     const { isVisible, setIsVisible } = props;
     return (
         <BaseModal
