@@ -168,7 +168,12 @@ const MainMenu = () => {
                 className="main-menu__menu h-full overflow-y-auto"
             />
             <FontAwesomeIcon
-                className="absolute top-2 -right-2 py-1 text-center text-primary cursor-pointer rounded-full text-2xl"
+                className={
+                    classNames("absolute top-3 -right-3",
+                        "block aspect-square text-primary text-center cursor-pointer rounded-full text-2xl",
+                        "border-2 border-secondary z-10 bg-secondary",
+                    )
+                }
                 icon={collapsed ? faCircleChevronRight : faCircleChevronLeft}
                 onClick={() => {
                     setCollapsed(!collapsed);
