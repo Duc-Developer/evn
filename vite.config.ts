@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 
 const manualChunks = (id: string) => {
@@ -45,8 +45,8 @@ const manualChunks = (id: string) => {
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
-
-const port = Number(process.env.VITE_REACT_APP_PORT) || 3000;
+    const env = loadEnv(mode, process.cwd(), '')
+    const port = Number(env.VITE_REACT_APP_PORT) || 3000;
     return {
         server: {
             port,
@@ -100,6 +100,10 @@ const port = Number(process.env.VITE_REACT_APP_PORT) || 3000;
                     manualChunks,
                 },
             },
+        },
+        define: {
+            VITE_REACT_APP_API_URL: JSON.stringify(env.VITE_REACT_APP_API_URL),
+            VITE_REACT_APP_ACCESS_TOKEN: JSON.stringify(env.VITE_REACT_APP_ACCESS_TOKEN),
         },
     };
 });

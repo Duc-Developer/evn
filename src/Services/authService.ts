@@ -1,30 +1,27 @@
+import axios from 'axios';
+import { BaseResponse } from '@src/Models';
+import { FormLogin, FormLoginResponse, FormRegister, FormRegisterResponse, UserInfo } from '@src/Models/auth';
 import { BaseService } from '.';
 
-const endpoint = 'profile';
+const endpoint = 'users';
 
-interface Responses {
-    isSuccess: boolean;
-}
-class AuthService extends BaseService<Responses> {
+class AuthService extends BaseService<BaseResponse> {
     constructor() {
         super(endpoint);
     }
 
-    getProfile(id: string) {
-        // do this
-        // this.get<Responses>(id);
+    async register(data: FormRegister) {
+        return this.post<FormRegisterResponse, FormRegister>(data, { url: `${endpoint}/register` });
+    }
 
-        // mock
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                const rand = Math.random() * 10;
-                if (rand >= 5) {
-                    resolve(id);
-                } else {
-                    reject(id);
-                }
-            }, 500);
-        });
+    async login(data: FormLogin) {
+        return this.post<FormLoginResponse>(data, { url: `${endpoint}/login` });
+    }
+
+    async getMyProfile() {
+        this.get<BaseResponse<UserInfo>>(`${endpoint}/me`);
     }
 }
-export default new AuthService();
+
+const authService = new AuthService();
+export default authService;

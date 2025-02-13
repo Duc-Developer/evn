@@ -1,6 +1,6 @@
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { AppConfigs } from '@src/Constants';
 import { AxiosInterceptors } from '@src/Models';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 const APP_CONFIGS = AppConfigs.default;
 class AxiosService {
@@ -9,7 +9,7 @@ class AxiosService {
         const service = axios.create({
             withCredentials: true,
             responseType: 'json',
-            baseURL: APP_CONFIGS.VITE_REACT_APP_API_URL,
+            baseURL: APP_CONFIGS.ROOT_API,
         });
         this.service = service;
     }
